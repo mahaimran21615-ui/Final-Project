@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Search any city and see its current weather.">
+  <title>Skyline Weather</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="default">
+  <div class="page">
+    <header class="site-header">
+      <h1> Weather App</h1>
+      <p class="subtitle">Current conditions for any city in the world.</p>
+    </header>
+
+    <section class="search-panel" aria-label="Search">
+      <form id="search-form" class="search-form" novalidate>
+        <label for="city-input" class="visually-hidden">City name</label>
+        <input id="city-input" name="city" type="search" placeholder="Search a city, e.g. Lahore" autocomplete="off" required>
+        <button type="submit" class="btn-primary">Search</button>
+      </form>
+
+      <div class="search-extras">
+        <div class="unit-toggle" role="group" aria-label="Temperature unit">
+          <button type="button" class="unit-btn is-active" data-unit="C" aria-pressed="true">°C</button>
+          <button type="button" class="unit-btn" data-unit="F" aria-pressed="false">°F</button>
+        </div>
+        <nav id="recent" class="recent" aria-label="Recent searches" hidden>
+          <span class="recent-label">Recent:</span>
+          <ul id="recent-list"></ul>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Loading, error and welcome messages all live here -->
+    <div id="status" class="status" role="status" aria-live="polite">
+      <p class="status-text">Type a city above and press Search or Enter to see its weather.</p>
+    </div>
+
+    <main id="weather" class="weather" hidden>
+      <article class="main-card" aria-labelledby="city-name">
+        <div class="main-top">
+          <div>
+            <h2 id="city-name">City</h2>
+            <p id="region" class="region"></p>
+            <p id="description" class="description"></p>
+          </div>
+          <span id="icon" class="icon" role="img" aria-label="Weather icon"></span>
+        </div>
+        <p class="temp"><span id="temp">--</span><span id="temp-unit" class="temp-unit">°C</span></p>
+        <p id="updated" class="updated"></p>
+      </article>
+
+      <section class="details" aria-label="Weather details">
+        <article class="detail-card">
+          <h3>Feels like</h3>
+          <p id="feels">--</p>
+        </article>
+        <article class="detail-card">
+          <h3>Humidity</h3>
+          <p id="humidity">--</p>
+        </article>
+        <article class="detail-card">
+          <h3>Wind</h3>
+          <p id="wind">--</p>
+        </article>
+        <article class="detail-card">
+          <h3>Pressure</h3>
+          <p id="pressure">--</p>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
